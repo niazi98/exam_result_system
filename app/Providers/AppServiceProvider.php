@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\URL; // ✅ Add this line
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -14,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/students'; //  This redirects to students page after login
+    public const HOME = '/students'; // Redirect to students page after login
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -22,5 +23,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         parent::boot();
+
+        if (env('APP_ENV') === 'production') {
+            URL::forceScheme('https'); // Force HTTPS for all routes in production
+        }
     }
 }
