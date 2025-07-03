@@ -44,4 +44,9 @@
             </x-primary-button>
         </div>
     </form>
+    <div class="flex justify-center mt-6">
+        <a href="{{ route('register') }}" class="inline-block px-6 py-2 text-sm font-semibold text-indigo-700 bg-white bg-opacity-70 rounded-lg shadow-md hover:bg-indigo-50 hover:text-indigo-900 transition-colors duration-200">
+            {{ __('Don\'t have an account? Register') }}
+        </a>
+    </div>
 </x-guest-layout>
